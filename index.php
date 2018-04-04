@@ -9,7 +9,7 @@ $pixel_style = array(
 );
 $pixel_size = 10;
 //$filename = $argv[1];
-$filename = 'lotus3.png';
+$filename = 'test.png';
 if (! file_exists($filename) ) {
     die('No existe la imágen: ' . $filename);
 }
@@ -19,18 +19,18 @@ $size = getimagesize($filename);
 
 $width  = $size[0];
 $height = $size[1];
-echo 'width: ' . $width . '<br/>height: ' . $height;
+//echo 'width: ' . $width . '<br/>height: ' . $height;
 
 // open image into a true color image
 $orimage = imagecreatefrompng($filename);
 
 $im = imagecreatetruecolor($width,$height);
-header("Content-Type: image/png");
-echo $im;
-exit;
+//header("Content-Type: image/png");
+//echo $im;
+//exit;
 imagecopyresampled($im,$orimage,0,0,0,0, $width,$height,$width,$height);
 // header
-//output_head();
+output_head();
 
 // body
 $svg = '';
@@ -61,14 +61,14 @@ for($y = 0; $y < $height; $y++) {
         if (!isset($colors[$rgb])) { 
             $colors[$rgb] = $style;
         }
-        $svg .= '<svg:rect height="10" width="10" x="' . $x * $pixel_size . '" y="' . $y * $pixel_size . '" style="' . to_svg_style($style) . '" />';
+        $svg .= '<rect height="10" width="10" x="' . $x * $pixel_size . '" y="' . $y * $pixel_size . '" style="' . to_svg_style($style) . '" />';
         $svg .= "\n";
     }
 }
 $y += 3 * $pixel_size;
 $x = 0;
 foreach($colors as $color => $style) {
-    $svg .= '<svg:rect height="10" width="10" x="' . 2 * $x * $pixel_size . '" y="' . $y * $pixel_size . '" style="' . to_svg_style($style) . '" />';
+    $svg .= '<rect height="10" width="10" x="' . 2 * $x * $pixel_size . '" y="' . $y * $pixel_size . '" style="' . to_svg_style($style) . '" />';
     $x++;
 }
 echo $svg;
@@ -83,26 +83,14 @@ function to_svg_style($s) {
     return implode($l, ';');
 }
 function output_head() {
-$svg = '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   width="744.09448819"
-   height="1052.3622047"
-   id="svg4435"
-   version="1.1">
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1">';
+$svg = '<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="144px" height="128px" viewBox="0 0 144 128" enable-background="new 0 0 144 128" xml:space="preserve">';
 echo $svg;
 }
 function output_foot() {
-    $svg = '  </g></svg>';
+    $svg = '  </svg>';
     echo $svg;
 }
 // vim: se ts=4 sw=4 ai expandtab:
