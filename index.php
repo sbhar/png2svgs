@@ -16,7 +16,7 @@ if (! file_exists($filename) ) {
 // read image
 $size = getimagesize($filename);
 //print_r($size);
-//exit;
+
 $width  = $size[0];
 $height = $size[1];
 // open image into a true color image
@@ -25,6 +25,7 @@ $im = imagecreatetruecolor($width,$height);
 imagecopyresampled($im,$orimage,0,0,0,0, $width,$height,$width,$height);
 // header
 output_head();
+exit;
 // body
 $svg = '';
 $colors = array();
