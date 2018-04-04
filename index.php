@@ -24,8 +24,8 @@ $orimage = imagecreatefrompng($filename);
 $im = imagecreatetruecolor($width,$height);
 imagecopyresampled($im,$orimage,0,0,0,0, $width,$height,$width,$height);
 // header
-output_head();
-exit;
+//output_head();
+//exit;
 // body
 $svg = '';
 $colors = array();
