@@ -15,6 +15,7 @@ if (! file_exists($filename) ) {
 }
 // read image
 $size = getimagesize($filename);
+echo $size;
 exit;
 $width  = $size[0];
 $height = $size[1];
