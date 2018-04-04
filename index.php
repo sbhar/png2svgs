@@ -19,13 +19,15 @@ $size = getimagesize($filename);
 
 $width  = $size[0];
 $height = $size[1];
+echo 'width: ' . $width . '<br/>height: ' . $height;
+exit;
 // open image into a true color image
 $orimage = imagecreatefrompng($filename);
 $im = imagecreatetruecolor($width,$height);
 imagecopyresampled($im,$orimage,0,0,0,0, $width,$height,$width,$height);
 // header
 //output_head();
-//exit;
+
 // body
 $svg = '';
 $colors = array();
