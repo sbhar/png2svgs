@@ -23,8 +23,11 @@ echo 'width: ' . $width . '<br/>height: ' . $height;
 
 // open image into a true color image
 $orimage = imagecreatefrompng($filename);
-exit;
+
 $im = imagecreatetruecolor($width,$height);
+header("Content-Type: image/png");
+echo $im;
+exit;
 imagecopyresampled($im,$orimage,0,0,0,0, $width,$height,$width,$height);
 // header
 //output_head();
