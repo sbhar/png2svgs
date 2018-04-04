@@ -14,13 +14,14 @@ if (! file_exists($filename) ) {
     die('No existe la imágen: ' . $filename);
 }
 // read image
-$size = getimagesize($filename);
+$image = new Imagick($filename); 
+$size = $image->getimagesize();
 $width  = $size[0];
 $height = $size[1];
 // open image into a true color image
-$orimage = imagecreatefrompng($filename);
-$im = imagecreatetruecolor($width,$height);
-imagecopyresampled($im,$orimage,0,0,0,0, $width,$height,$width,$height);
+$orimage = $image->imagecreatefrompng($filename);
+$im = $image->imagecreatetruecolor($width,$height);
+$image->imagecopyresampled($im,$orimage,0,0,0,0, $width,$height,$width,$height);
 // header
 output_head();
 // body
@@ -29,7 +30,7 @@ $colors = array();
 for($y = 0; $y < $height; $y++) {
     for($x = 0; $x < $width; $x++) {
         // get pixel at (x,y)
-        $rgb = imagecolorat($im, $x, $y);
+        $rgb = $image->imagecolorat($im, $x, $y);
         $r = ($rgb >> 16) & 0xFF;
         $g = ($rgb >> 8) & 0xFF;
         $b = $rgb & 0xFF;
