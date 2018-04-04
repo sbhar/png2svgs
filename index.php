@@ -16,6 +16,8 @@ if (! file_exists($filename) ) {
 // read image
 $image = new Imagick($filename); 
 $size = $image->getimagesize();
+echo $size;
+exit;
 $width  = $size[0];
 $height = $size[1];
 // open image into a true color image
