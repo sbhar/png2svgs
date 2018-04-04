@@ -1,0 +1,5 @@
+{
+    "require": {
+        "orbitale/imagemagick-php": "^1.6"
+    }
+}

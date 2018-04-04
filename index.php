@@ -1,4 +1,5 @@
 <?php
+
 // convert PNG image to SVG
 $pixel_style = array(
     'fill' => '',
@@ -8,11 +9,19 @@ $pixel_style = array(
     'stroke-opacity' => 1,
 );
 $pixel_size = 10;
-$filename = $argv[1];
+//$filename = $argv[1];
+$filename = 'bg-home-1920.jpg';
 if (! file_exists($filename) ) {
     die('No existe la imágen: ' . $filename);
 }
 // read image
+/*$response = $command
+->getimagesize($filename)
+->run()
+if (!$response->hasFailed()) {
+	header('Content-type: image/jpeg');
+    echo file_get_contents('bg-home-1920.jpg');
+}*/
 $size = getimagesize($filename);
 $width  = $size[0];
 $height = $size[1];
