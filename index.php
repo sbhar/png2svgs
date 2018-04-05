@@ -1,7 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: *'); 
 
-include __DIR__ . '/vendor/autoload.php';
 // convert PNG image to SVG
 $pixel_style = array(
     'fill' => '',
