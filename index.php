@@ -29,6 +29,7 @@ $im = imagecreatetruecolor($width,$height);
 //echo $im;
 //exit;
 imagecopyresampled($im,$orimage,0,0,0,0, $width,$height,$width,$height);
+exit;
 // header
 output_head();
 
